@@ -13,7 +13,13 @@
 -(void)eat{
     NSLog(@"has eat");
 }
-
+/*
+ 1 哪个类 cls
+ 2 方法编号 SEL
+ 3 方法实现 IMP
+ 4 方法的类型 type
+ 
+ */
 +(BOOL)resolveInstanceMethod:(SEL)sel{
     class_addMethod([Person class], sel, (IMP)run, nil);
     return [super resolveInstanceMethod:sel];
