@@ -12,6 +12,8 @@
 @implementation Person
 -(void)eat{
     NSLog(@"has eat");
+    
+
 }
 /*
  1 哪个类 cls
@@ -29,5 +31,8 @@ void run(id obj,SEL _cmd){
     NSLog(@"runrunrun%@",obj);
 }
 
+-(void)forwardInvocation:(NSInvocation *)anInvocation{
+    
+}
 
 @end
