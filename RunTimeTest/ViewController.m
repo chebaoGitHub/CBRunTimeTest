@@ -14,20 +14,29 @@
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView * table;
+@property (nonatomic,strong) NSArray * titleArray;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    RunTimeCode * rt = [[RunTimeCode alloc] init];
+    self.titleArray = rt.titleArray;
+    
+    
     _table = [[UITableView alloc] init];
     _table.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    _table.backgroundColor = [UIColor lightGrayColor];
+//    _table.backgroundColor = [UIColor lightGrayColor];
     _table.delegate = self;
     _table.dataSource = self;
+    _table.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_table];
+    
 
-
+    
     
     //只是一些临时代码########################################################################################
 //    [self linshi];
@@ -39,11 +48,13 @@
 
 #pragma mark- table delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return _titleArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell * cell = [[UITableViewCell alloc] init];
+    cell.contentView.backgroundColor = [UIColor lightGrayColor];
+    cell.textLabel.text = [_titleArray objectAtIndex:indexPath.row];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

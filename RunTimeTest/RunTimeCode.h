@@ -22,5 +22,6 @@
 
 @interface RunTimeCode : NSObject
 +(void)chuangJanYiGeLei;
+@property (nonatomic,strong) NSArray * titleArray;
 
 @end
